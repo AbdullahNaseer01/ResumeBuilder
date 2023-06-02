@@ -35,7 +35,6 @@ export default function Home() {
     </div>
   </div>
 </section>
-{/* <footer>This is the footer</footer> */}
   </>
   )
 }
