@@ -5,7 +5,7 @@ import { CiSquareRemove } from "react-icons/ci";
 import { BiAddToQueue } from "react-icons/bi";
 import { IoMdSchool } from "react-icons/io";
 
-const page = () => {
+const Page = () => {
   const [educationfield, setEducationField] = useState([
     { degree: "aaa", school: "aaa" },
   ]);
@@ -296,4 +296,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
