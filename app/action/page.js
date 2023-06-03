@@ -1,233 +1,173 @@
-import React from 'react'
+"use client";
+import { useState } from "react";
+import React from "react";
 
 const page = () => {
+  const [educationfield, setEducationField] = useState([
+    { degree: "", school: "" },
+  ]);
+  const handleFormChange = (event, index) => {
+    // console.log(index, event.target.name);
+    let data = [...educationfield]
+    data[index][event.target.name] = event.target.value
+    setEducationField(data)
+  };
   return (
     <>
-  {/* <div className='action bg-slate-200 min-h-screen'>
-    <div className=' container mx-auto w-full'>
-      <div className='w-full bg-rose-200'>
-        <div className="basicInfo mx-auto">
-        <input type="text" placeholder='First Name' className='border-2 border-slate-400 rounded-md outline-none py-1 px-2' />
-        <input type="text" placeholder='Last Name' className='border-2 border-slate-400 rounded-md outline-none py-1 px-2' />
-        <input type="email" placeholder='Email' className='border-2 border-slate-400 rounded-md outline-none py-1 px-2' />
-        <input type="phone" placeholder='Last Name' className='border-2 border-slate-400 rounded-md outline-none py-1 px-2' />
-        <input type="text" placeholder='Address' className='border-2 border-slate-400 rounded-md outline-none py-1 px-2' />
-        
-
-        </div>
-      </div>
-      <div className='w-full bg-red-300'>Resume</div>
-
-    </div>
-    
-  </div> */}
-<section className="gradient-form h-full bg-neutral-200 ">
-  <div className="container h-full p-10">
-    <div className="g-6 flex h-full flex-wrap items-center justify-center text-neutral-800 ">
-      <div className="w-full">
-        <div className="block rounded-lg bg-white shadow-lg">
-          <div className="g-0 lg:flex lg:flex-wrap">
-            {/* Left column container*/}
-            <div className="px-4 md:px-0 lg:w-6/12">
-              <div className="md:mx-6 md:p-12">
-                {/*Logo*/}
-                <div className="text-center">
-                  <img
-                    className="mx-auto w-48"
-                    src="https://tecdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp"
-                    alt="logo"
-                  />
-                  <h4 className="mb-12 mt-1 pb-1 text-xl font-semibold">
-                    We are The Lotus Team
-                  </h4>
-                </div>
-                <form>
-                  <p className="mb-4">Start Filling & start Creating</p>
-                  {/* firstName */}
-                  <div className="relative mb-4" data-te-input-wrapper-init="">
-                    <input
-                      type="text"
-                      className="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
-                      id="exampleFormControlInput1"
-                      placeholder="FirstName"
-                    />
-                    <label
-                      htmlFor="exampleFormControlInput1"
-                      className="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary-600 peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none"
-                    >
-                      First Name
-                    </label>
-                  </div>
-                  {/* LastName */}
-                  <div className="relative mb-4" data-te-input-wrapper-init="">
-                    <input
-                      type="text"
-                      className="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
-                      id="exampleFormControlInput1"
-                      placeholder="Username"
-                    />
-                    <label
-                      htmlFor="exampleFormControlInput1"
-                      className="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary-600 peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none"
-                    >
-                      Last Name
-                    </label>
-                  </div>
-                  {/* headline */}
-                  <div className="relative mb-4" data-te-input-wrapper-init="">
-                    <input
-                      type="text"
-                      className="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
-                      id="exampleFormControlInput1"
-                      placeholder="Username"
-                    />
-                    <label
-                      htmlFor="exampleFormControlInput1"
-                      className="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary-600 peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none"
-                    >
-                      HeadLine
-                    </label>
-                  </div>
-                  {/*Username input*/}
-                  <div className="relative mb-4" data-te-input-wrapper-init="">
-                    <input
-                      type="text"
-                      className="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
-                      id="exampleFormControlInput1"
-                      placeholder="Username"
-                    />
-                    <label
-                      htmlFor="exampleFormControlInput1"
-                      className="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary-600 peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none"
-                    >
-                      Email address
-                    </label>
-                  </div>
-                  {/* phone */}
-                  <div className="relative mb-4" data-te-input-wrapper-init="">
-                    <input
-                      type="phone"
-                      className="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
-                      id="exampleFormControlInput1"
-                      placeholder="phone"
-                    />
-                    <label
-                      htmlFor="exampleFormControlInput1"
-                      className="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary-600 peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none"
-                    >
-                      phone
-                    </label>
-                  </div>
-                  {/* post Code */}
-                  <div className="relative mb-4" data-te-input-wrapper-init="">
-                    <input
-                      type="text"
-                      className="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
-                      id="exampleFormControlInput1"
-                      placeholder="Username"
-                    />
-                    <label
-                      htmlFor="exampleFormControlInput1"
-                      className="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary-600 peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none"
-                    >
-                      post Code
-                    </label>
-                  </div>
-                  {/* city */}
-                  <div className="relative mb-4" data-te-input-wrapper-init="">
-                    <input
-                      type="text"
-                      className="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
-                      id="exampleFormControlInput1"
-                      placeholder="Username"
-                    />
-                    <label
-                      htmlFor="exampleFormControlInput1"
-                      className="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary-600 peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none"
-                    >
-                      City
-                    </label>
-                  </div>
-                  {/* discription */}
-                  <div className="relative mb-4" data-te-input-wrapper-init="">
-                    <textarea
-                      type="text"
-                      className="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
-                      id="exampleFormControlInput1"
-                      placeholder="Username"
-                    />
-                    <label
-                      htmlFor="exampleFormControlInput1"
-                      className="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary-600 peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none"
-                    >
-                      Add Discription
-                    </label>
-                  </div>
-
-                  {/* Education */}
-
-                 
-                  {/*Submit button*/}
-                  <div className="mb-12 pb-1 pt-1 text-center">
-                    <button
-                      className="mb-3 inline-block w-full rounded px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_rgba(0,0,0,0.2)] transition duration-150 ease-in-out hover:shadow-[0_8px_9px_-4px_rgba(0,0,0,0.1),0_4px_18px_0_rgba(0,0,0,0.2)] focus:shadow-[0_8px_9px_-4px_rgba(0,0,0,0.1),0_4px_18px_0_rgba(0,0,0,0.2)] focus:outline-none focus:ring-0 active:shadow-[0_8px_9px_-4px_rgba(0,0,0,0.1),0_4px_18px_0_rgba(0,0,0,0.2)]"
-                      type="button"
-                      data-te-ripple-init=""
-                      data-te-ripple-color="light"
-                      style={{
-                        background:
-                          "linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593)"
-                      }}
-                    >
-                      Log in
-                    </button>
-                    {/*Forgot password link*/}
-                    <a href="#!">Forgot password?</a>
-                  </div>
-                  {/*Register button*/}
-                  <div className="flex items-center justify-between pb-6">
-                    <p className="mb-0 mr-2">Don't have an account?</p>
-                    <button
-                      type="button"
-                      className="inline-block rounded border-2 border-danger px-6 pb-[6px] pt-2 text-xs font-medium uppercase leading-normal text-danger transition duration-150 ease-in-out hover:border-danger-600 hover:bg-neutral-500 hover:bg-opacity-10 hover:text-danger-600 focus:border-danger-600 focus:text-danger-600 focus:outline-none focus:ring-0 active:border-danger-700 active:text-danger-700"
-                      data-te-ripple-init=""
-                      data-te-ripple-color="light"
-                    >
-                      Register
-                    </button>
-                  </div>
-                </form>
-              </div>
-            </div>
-            {/* Right column container with background and description*/}
-            <div
-              className="flex items-center rounded-b-lg lg:w-6/12 lg:rounded-r-lg lg:rounded-bl-none"
-              style={{
-                background:
-                  "linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593)"
-              }}
+      <div className="action bg-slate-200 min-h-screen">
+        <div className=" container mx-auto w-full sm:flex">
+          <div className="w-full bg-rose-200 sm:w-1/2">
+            <form
+              action="#"
+              method="POST"
+              className="mx-auto mt-16 max-w-xl sm:mt-20"
             >
-              <div className="px-4 py-6 text-white md:mx-6 md:p-12">
-                <h4 className="mb-6 text-xl font-semibold">
-                  We are more than just a company
-                </h4>
-                <p className="text-sm">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea commodo consequat.
-                </p>
+              <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
+                <div>
+                  <label
+                    htmlFor="first-name"
+                    className="block text-sm font-semibold leading-6 text-gray-900"
+                  >
+                    First name
+                  </label>
+                  <div className="mt-2.5">
+                    <input
+                      type="text"
+                      name="first-name"
+                      id="first-name"
+                      autoComplete="given-name"
+                      className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    />
+                  </div>
+                </div>
+                <div>
+                  <label
+                    htmlFor="last-name"
+                    className="block text-sm font-semibold leading-6 text-gray-900"
+                  >
+                    Last name
+                  </label>
+                  <div className="mt-2.5">
+                    <input
+                      type="text"
+                      name="last-name"
+                      id="last-name"
+                      autoComplete="family-name"
+                      className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    />
+                  </div>
+                </div>
+                <div className="sm:col-span-2">
+                  <label
+                    htmlFor="title"
+                    className="block text-sm font-semibold leading-6 text-gray-900"
+                  >
+                    title
+                  </label>
+                  <div className="mt-2.5">
+                    <input
+                      type="text"
+                      name="title"
+                      id="title"
+                      autoComplete="organization"
+                      className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    />
+                  </div>
+                </div>
+                {/*  */}
+                <div className="sm:col-span-2">
+                  <label
+                    htmlFor="about"
+                    className="block text-sm font-semibold leading-6 text-gray-900"
+                  >
+                    About/Discription
+                  </label>
+                  <div className="mt-2.5">
+                    <textarea
+                      name="about"
+                      id="about"
+                      rows={2}
+                      className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      defaultValue={""}
+                    />
+                  </div>
+                </div>
+
+                <div className="sm:col-span-1">
+                  <label
+                    htmlFor="email"
+                    className="block text-sm font-semibold leading-6 text-gray-900"
+                  >
+                    Email
+                  </label>
+                  <div className="mt-2.5">
+                    <input
+                      type="email"
+                      name="email"
+                      id="email"
+                      autoComplete="email"
+                      className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    />
+                  </div>
+                </div>
+                <div className="sm:col-span-1">
+                  <label
+                    htmlFor="phone-number"
+                    className="block text-sm font-semibold leading-6 text-gray-900"
+                  >
+                    Phone number
+                  </label>
+                  <div className="relative mt-2.5">
+                    <input
+                      type="tel"
+                      name="phone-number"
+                      id="phone-number"
+                      autoComplete="tel"
+                      className="block w-full rounded-md border-0 px-3.5 py-2 pl-20 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    />
+                  </div>
+                </div>
+                {educationfield.map((form, index) => {
+  return (
+    <div key={index}>
+      <input
+        type="text"
+        name="degree"
+        placeholder="degree"
+        id="degree"
+        value={form.degree}
+        onChange={(event) => handleFormChange(event, index)}
+      />
+      <input
+        type="text"
+        name="school"
+        id="school"
+        placeholder="school"
+        value={form.school}
+        onChange={(event) => handleFormChange(event, index)}
+      />
+
+      <button>Add Education</button>
+    </div>
+  );
+})}
+
               </div>
-            </div>
+              {/* <div className="mt-10">
+                <button
+                  type="submit"
+                  className="block w-full rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                >
+                  Let's talk
+                </button>
+              </div> */}
+            </form>
           </div>
+          <div className="w-full bg-red-300 sm:w-1/2 ">Resume</div>
         </div>
       </div>
-    </div>
-  </div>
-</section>
-
     </>
-  )
-}
+  );
+};
 
-export default page
+export default page;
