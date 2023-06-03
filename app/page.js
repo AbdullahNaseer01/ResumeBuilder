@@ -27,11 +27,19 @@ export default function Home() {
       </div>
     </div>
     <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
-      <img
+      {/* <img
         className="object-cover object-center rounded"
         alt="hero"
-        src="https://dummyimage.com/720x600"
-      />
+        // src="https://dummyimage.com/720x600"
+        src=''
+      /> */}
+      <Image
+      className='object-cover'
+      src="./resume.svg"
+      width={720}
+      height={500}
+      alt="Resume"
+    />
     </div>
   </div>
 </section>
