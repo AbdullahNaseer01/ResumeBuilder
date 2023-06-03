@@ -1,4 +1,5 @@
-"use client";
+"use client"; 
+import React from "react";
 import { useState } from "react";
 import { CiSquareRemove } from "react-icons/ci";
 import { BiAddToQueue } from "react-icons/bi";

@@ -10,7 +10,7 @@ const Navbar = () => {
         className="my-1 mr-2 flex items-center text-neutral-900 hover:text-neutral-900 focus:text-neutral-900 lg:mb-0 lg:mt-0"
         href="#"
       >
-        <img
+        <img 
           src="https://tecdn.b-cdn.net/img/logo/te-transparent-noshadows.webp"
           style={{ height: 20 }}
           alt=""
