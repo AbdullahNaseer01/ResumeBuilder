@@ -1,9 +1,13 @@
-"use client"; 
+"use client";
 import React from "react";
 import { useState } from "react";
 import { CiSquareRemove } from "react-icons/ci";
 import { BiAddToQueue } from "react-icons/bi";
-import { IoMdSchool } from "react-icons/io";
+import {
+  IoMdSchool,
+  IoIosArrowDropdownCircle,
+  IoIosArrowDropupCircle,
+} from "react-icons/io";
 
 const Page = () => {
   const [educationfield, setEducationField] = useState([
@@ -15,7 +19,7 @@ const Page = () => {
     data[index][event.target.name] = event.target.value;
     setEducationField(data);
   };
-  const [isToggled, setIsToggled] = useState(true);
+  const [isToggled, setIsToggled] = useState(false);
 
   const handleToggle = () => {
     setIsToggled(!isToggled);
@@ -47,7 +51,7 @@ const Page = () => {
       setEducationField(data);
     }
   };
-  
+
   return (
     <>
       <div className="action bg-slate-200 min-h-screen">
@@ -163,55 +167,6 @@ const Page = () => {
                     />
                   </div>
                 </div>
-                {/* {educationfield.map((form, index) => {
-                  return (
-                    <div key={index} className="sm:col-span-2">
-                      <div>
-                        <label
-                          htmlFor="first-name"
-                          className="block text-sm font-semibold leading-6 text-gray-900"
-                        >
-                          Degree
-                        </label>
-                        <div className="mt-2.5">
-                          <input
-                            type="text"
-                            name="degree"
-                            id="degree"
-                            autoComplete="given-name"
-                            value={form.degree}
-                            onChange={(event) => handleFormChange(event, index)}
-                            className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                          />
-                        </div>
-                      </div>
-                      <div>
-                  <label
-                    htmlFor="first-name"
-                    className="block text-sm font-semibold leading-6 text-gray-900"
-                  >
-                    School
-                  </label>
-                  <div className="mt-2.5">
-                    <input
-                      type="text"
-                      name="school"
-                      id="school"
-                      autoComplete="given-name"
-                      value={form.school}
-                            onChange={(event) => handleFormChange(event, index)}
-                      className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                    />
-                  </div>
-                </div>
-
-
-                      <button onClick={submit}>Add Education</button>
-                      <button onClick={addEducationFields}>Add More</button>
-
-                    </div>
-                  );
-                })} */}
               </div>
               {/* <div className="mt-10">
                 <button
@@ -222,25 +177,29 @@ const Page = () => {
                 </button>
               </div> */}
             </form>
-            <button onClick={handleToggle} className="flex">
+            <button onClick={handleToggle} className="flex mx-auto mt-16 ">
               Add Education <IoMdSchool />{" "}
+              {isToggled ? (
+                <IoIosArrowDropupCircle />
+              ) : (
+                <IoIosArrowDropdownCircle />
+              )}
             </button>
             {educationfield.map((form, index) => {
               return (
                 <div
                   key={index}
-                  className={`sm:col-span-2 mx-auto max-w-xl ${
-                    isToggled ? "hidden" : ""
+                  className={`sm:col-span-2 mx-auto max-w-xl border-slate-400 border-2 rounded-lg box-border relative ${
+                    isToggled ? "" : "hidden"
                   }`}
                 >
                   <button
                     onClick={() => {
                       removeEducationField(index);
                     }}
-                    className="flex"
+                    className=" absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500  border-white rounded-full -top-4 -right-0 drop-shadow-lg"
                   >
-                    Remove
-                    <CiSquareRemove />
+                    X
                   </button>
                   <div>
                     <label
@@ -281,6 +240,47 @@ const Page = () => {
                     </div>
                   </div>
 
+                  <div className="flex">
+                    <div className="mr-2">
+                      <label
+                        htmlFor="startDate"
+                        className="block text-sm font-semibold leading-6 text-gray-900"
+                      >
+                        Start Date
+                      </label>
+                      <div className="mt-2.5">
+                        <input
+                          type="date"
+                          name="startDate"
+                          id="startDate"
+                          autoComplete="given-name"
+                          // value={form.degree}
+                          onChange={(event) => handleFormChange(event, index)}
+                          className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                        />
+                      </div>
+                    </div>
+                    <div>
+                      <label
+                        htmlFor="endDate"
+                        className="block text-sm font-semibold leading-6 text-gray-900"
+                      >
+                        End Date
+                      </label>
+                      <div className="mt-2.5">
+                        <input
+                          type="date"
+                          name="endDate"
+                          id="endDate"
+                          autoComplete="given-name"
+                          // value={form.degree}
+                          onChange={(event) => handleFormChange(event, index)}
+                          className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
                   <button onClick={submit}>Submit Education</button>
                   <button onClick={addEducationFields}>
                     <BiAddToQueue />
@@ -292,6 +292,26 @@ const Page = () => {
           <div className="w-full bg-red-300 sm:w-1/2 ">Resume</div>
         </div>
       </div>
+
+      <button
+        type="button"
+        class="relative inline-flex items-center p-3 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+      >
+        <svg
+          class="w-6 h-6"
+          aria-hidden="true"
+          fill="currentColor"
+          viewBox="0 0 20 20"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
+          <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
+        </svg>
+        <span class="sr-only">Notifications</span>
+        <div class="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full -top-2 -right-2 dark:border-gray-900">
+          20
+        </div>
+      </button>
     </>
   );
 };
