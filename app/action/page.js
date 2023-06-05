@@ -22,6 +22,7 @@ const Page = () => {
   const [isToggled, setIsToggled] = useState(false);
 
   const handleToggle = () => {
+    event.preventDefault()
     setIsToggled(!isToggled);
   };
 
