@@ -35,14 +35,7 @@ const Page = () => {
     };
     setEducationField([...educationfield, object]);
   };
-  // const removeEducationField = (index) => {
-  //   if(index >= 0){
-  //     console.log(index);
-  //     let data = [...educationfield];
-  //     data.splice(index, 1);
-  //     setEducationField(data);
-  //   }
-  // };
+
   const removeEducationField = (index) => {
     // e.preventdefault()
 
