@@ -166,119 +166,119 @@ const Page = () => {
                 </div>
               </div>
               <button onClick={handleToggle} className="flex mx-auto mt-16 ">
-              Add Education <IoMdSchool />{" "}
-              {isToggled ? (
-                <IoIosArrowDropupCircle />
-              ) : (
-                <IoIosArrowDropdownCircle />
-              )}
-            </button>
-            {educationfield.map((form, index) => {
-              return (
-                <div>
-                  <div
-                  key={index}
-                  className={`sm:col-span-2 mx-auto max-w-xl border-slate-400 border-2 rounded-lg box-border relative ${
-                    isToggled ? "" : "hidden"
-                  }`}
-                >
-                  <button
-                    onClick={() => {
-                      removeEducationField(index);
-                    }}
-                    className=" absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500  border-white rounded-full -top-4 -right-0 drop-shadow-lg"
-                  >
-                    X
-                  </button>
-                  <div>
-                    <label
-                      htmlFor="degree"
-                      className="block text-sm font-semibold leading-6 text-gray-900"
+                Add Education <IoMdSchool />{" "}
+                {isToggled ? (
+                  <IoIosArrowDropupCircle />
+                ) : (
+                  <IoIosArrowDropdownCircle />
+                )}
+              </button>
+              {educationfield.map((form, index) => {
+                return (
+                  <div key={index}>
+                    <div
+                      className={`sm:col-span-2 mx-auto max-w-xl border-slate-400 border-2 rounded-lg box-border relative ${
+                        isToggled ? "" : "hidden"
+                      }`}
                     >
-                      Degree
-                    </label>
-                    <div className="mt-2.5">
-                      <input
-                        type="text"
-                        name="degree"
-                        id="degree"
-                        value={form.degree}
-                        onChange={(event) => handleFormChange(event, index)}
-                        className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                      />
-                    </div>
-                  </div>
-                  <div>
-                    <label
-                      htmlFor="school"
-                      className="block text-sm font-semibold leading-6 text-gray-900"
-                    >
-                      School
-                    </label>
-                    <div className="mt-2.5">
-                      <input
-                        type="text"
-                        name="school"
-                        id="school"
-                        value={form.school}
-                        onChange={(event) => handleFormChange(event, index)}
-                        className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="md:flex">
-                    <div className="md:mr-2">
-                      <label
-                        htmlFor="startDate"
-                        className="block text-sm font-semibold leading-6 text-gray-900"
+                      <button
+                        onClick={() => {
+                          removeEducationField(index);
+                        }}
+                        className=" absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500  border-white rounded-full -top-4 -right-0 drop-shadow-lg"
                       >
-                        Start Date
-                      </label>
-                      <div className="mt-2.5">
-                        <input
-                          type="date"
-                          name="startDate"
-                          id="startDate"
-                          // value={form.degree}
-                          onChange={(event) => handleFormChange(event, index)}
-                          className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                        />
+                        X
+                      </button>
+                      <div>
+                        <label
+                          htmlFor="degree"
+                          className="block text-sm font-semibold leading-6 text-gray-900"
+                        >
+                          Degree
+                        </label>
+                        <div className="mt-2.5">
+                          <input
+                            type="text"
+                            name="degree"
+                            id="degree"
+                            value={form.degree}
+                            onChange={(event) => handleFormChange(event, index)}
+                            className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                          />
+                        </div>
                       </div>
-                    </div>
-                    <div>
-                      <label
-                        htmlFor="endDate"
-                        className="block text-sm font-semibold leading-6 text-gray-900"
-                      >
-                        End Date
-                      </label>
-                      <div className="mt-2.5">
-                        <input
-                          type="date"
-                          name="endDate"
-                          id="endDate"
-                          // value={form.degree}
-                          onChange={(event) => handleFormChange(event, index)}
-                          className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                        />
+                      <div>
+                        <label
+                          htmlFor="school"
+                          className="block text-sm font-semibold leading-6 text-gray-900"
+                        >
+                          School
+                        </label>
+                        <div className="mt-2.5">
+                          <input
+                            type="text"
+                            name="school"
+                            id="school"
+                            value={form.school}
+                            onChange={(event) => handleFormChange(event, index)}
+                            className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                          />
+                        </div>
                       </div>
-                    </div>
-                  </div>
 
-                  <button onClick={submit}>Save</button>
-                  
-                </div>
-                <button onClick={addEducationFields} className="flex">
-                    Add More<BiAddToQueue />
-                  </button>
-                </div>
-                
-              );
-            })}
-            
+                      <div className="md:flex">
+                        <div className="md:mr-2">
+                          <label
+                            htmlFor="startDate"
+                            className="block text-sm font-semibold leading-6 text-gray-900"
+                          >
+                            Start Date
+                          </label>
+                          <div className="mt-2.5">
+                            <input
+                              type="date"
+                              name="startDate"
+                              id="startDate"
+                              // value={form.degree}
+                              onChange={(event) =>
+                                handleFormChange(event, index)
+                              }
+                              className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                            />
+                          </div>
+                        </div>
+                        <div>
+                          <label
+                            htmlFor="endDate"
+                            className="block text-sm font-semibold leading-6 text-gray-900"
+                          >
+                            End Date
+                          </label>
+                          <div className="mt-2.5">
+                            <input
+                              type="date"
+                              name="endDate"
+                              id="endDate"
+                              // value={form.degree}
+                              onChange={(event) =>
+                                handleFormChange(event, index)
+                              }
+                              className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                            />
+                          </div>
+                        </div>
+                      </div>
+
+                      <button onClick={submit}>Save</button>
+                    </div>
+                    <button onClick={addEducationFields} className="flex">
+                      Add More
+                      <BiAddToQueue />
+                    </button>
+                  </div>
+                );
+              })}
             </form>
-            
           </div>
           <div className="w-full bg-red-300 sm:w-1/2 ">Resume</div>
         </div>
