@@ -11,7 +11,7 @@ import {
 
 const Page = () => {
   const [educationfield, setEducationField] = useState([
-    { degree: "aaa", school: "aaa" },
+    { degree: "", school: "" },
   ]);
   const handleFormChange = (event, index) => {
     // console.log(index, event.target.name);
@@ -44,6 +44,8 @@ const Page = () => {
   //   }
   // };
   const removeEducationField = (index) => {
+    // e.preventdefault()
+
     if (educationfield.length > 1) {
       console.log(index);
       let data = [...educationfield];
@@ -75,7 +77,6 @@ const Page = () => {
                       type="text"
                       name="first-name"
                       id="first-name"
-                      autoComplete="given-name"
                       className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     />
                   </div>
@@ -92,7 +93,6 @@ const Page = () => {
                       type="text"
                       name="last-name"
                       id="last-name"
-                      autoComplete="family-name"
                       className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     />
                   </div>
@@ -109,7 +109,6 @@ const Page = () => {
                       type="text"
                       name="title"
                       id="title"
-                      autoComplete="organization"
                       className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     />
                   </div>
@@ -145,7 +144,6 @@ const Page = () => {
                       type="email"
                       name="email"
                       id="email"
-                      autoComplete="email"
                       className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     />
                   </div>
@@ -162,22 +160,12 @@ const Page = () => {
                       type="tel"
                       name="phone-number"
                       id="phone-number"
-                      autoComplete="tel"
                       className="block w-full rounded-md border-0 px-3.5 py-2 pl-20 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     />
                   </div>
                 </div>
               </div>
-              {/* <div className="mt-10">
-                <button
-                  type="submit"
-                  className="block w-full rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                >
-                  Let's talk
-                </button>
-              </div> */}
-            </form>
-            <button onClick={handleToggle} className="flex mx-auto mt-16 ">
+              <button onClick={handleToggle} className="flex mx-auto mt-16 ">
               Add Education <IoMdSchool />{" "}
               {isToggled ? (
                 <IoIosArrowDropupCircle />
@@ -187,7 +175,8 @@ const Page = () => {
             </button>
             {educationfield.map((form, index) => {
               return (
-                <div
+                <div>
+                  <div
                   key={index}
                   className={`sm:col-span-2 mx-auto max-w-xl border-slate-400 border-2 rounded-lg box-border relative ${
                     isToggled ? "" : "hidden"
@@ -203,7 +192,7 @@ const Page = () => {
                   </button>
                   <div>
                     <label
-                      htmlFor="first-name"
+                      htmlFor="degree"
                       className="block text-sm font-semibold leading-6 text-gray-900"
                     >
                       Degree
@@ -213,7 +202,6 @@ const Page = () => {
                         type="text"
                         name="degree"
                         id="degree"
-                        autoComplete="given-name"
                         value={form.degree}
                         onChange={(event) => handleFormChange(event, index)}
                         className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -222,7 +210,7 @@ const Page = () => {
                   </div>
                   <div>
                     <label
-                      htmlFor="first-name"
+                      htmlFor="school"
                       className="block text-sm font-semibold leading-6 text-gray-900"
                     >
                       School
@@ -232,7 +220,6 @@ const Page = () => {
                         type="text"
                         name="school"
                         id="school"
-                        autoComplete="given-name"
                         value={form.school}
                         onChange={(event) => handleFormChange(event, index)}
                         className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -240,8 +227,8 @@ const Page = () => {
                     </div>
                   </div>
 
-                  <div className="flex">
-                    <div className="mr-2">
+                  <div className="md:flex">
+                    <div className="md:mr-2">
                       <label
                         htmlFor="startDate"
                         className="block text-sm font-semibold leading-6 text-gray-900"
@@ -253,7 +240,6 @@ const Page = () => {
                           type="date"
                           name="startDate"
                           id="startDate"
-                          autoComplete="given-name"
                           // value={form.degree}
                           onChange={(event) => handleFormChange(event, index)}
                           className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -272,7 +258,6 @@ const Page = () => {
                           type="date"
                           name="endDate"
                           id="endDate"
-                          autoComplete="given-name"
                           // value={form.degree}
                           onChange={(event) => handleFormChange(event, index)}
                           className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -281,37 +266,23 @@ const Page = () => {
                     </div>
                   </div>
 
-                  <button onClick={submit}>Submit Education</button>
-                  <button onClick={addEducationFields}>
-                    <BiAddToQueue />
+                  <button onClick={submit}>Save</button>
+                  
+                </div>
+                <button onClick={addEducationFields} className="flex">
+                    Add More<BiAddToQueue />
                   </button>
                 </div>
+                
               );
             })}
+            
+            </form>
+            
           </div>
           <div className="w-full bg-red-300 sm:w-1/2 ">Resume</div>
         </div>
       </div>
-
-      <button
-        type="button"
-        class="relative inline-flex items-center p-3 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-      >
-        <svg
-          class="w-6 h-6"
-          aria-hidden="true"
-          fill="currentColor"
-          viewBox="0 0 20 20"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
-          <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
-        </svg>
-        <span class="sr-only">Notifications</span>
-        <div class="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full -top-2 -right-2 dark:border-gray-900">
-          20
-        </div>
-      </button>
     </>
   );
 };
