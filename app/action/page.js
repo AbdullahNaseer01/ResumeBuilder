@@ -175,11 +175,9 @@ const Page = () => {
               </button>
               {educationfield.map((form, index) => {
                 return (
-                  <div key={index}>
+                  <div key={index} className={`${isToggled ? "" : "hidden"}`} >
                     <div
-                      className={`sm:col-span-2 mx-auto max-w-xl border-slate-400 border-2 rounded-lg box-border relative ${
-                        isToggled ? "" : "hidden"
-                      }`}
+                      className={`sm:col-span-2 mx-auto max-w-xl border-slate-400 border-2 rounded-lg box-border relative`}
                     >
                       <button
                         onClick={() => {
