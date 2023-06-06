@@ -27,6 +27,7 @@ const Page = () => {
   };
 
   const submit = () => {
+    event.preventDefault()
     console.log(educationfield);
   };
   const addEducationFields = () => {
@@ -38,7 +39,7 @@ const Page = () => {
   };
 
   const removeEducationField = (index) => {
-    // e.preventdefault()
+    event.preventDefault()
 
     if (educationfield.length > 1) {
       console.log(index);
