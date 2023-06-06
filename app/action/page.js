@@ -31,6 +31,7 @@ const Page = () => {
     console.log(educationfield);
   };
   const addEducationFields = () => {
+    event.preventDefault()
     let object = {
       degree: "",
       school: "",
