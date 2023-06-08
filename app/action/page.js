@@ -13,6 +13,9 @@ const Page = () => {
   const [educationfield, setEducationField] = useState([
     { degree: "", school: "" },
   ]);
+  const [expriencefield, setExprienceField] = useState([
+    { title: "", company: "" },
+  ]);
   const handleFormChange = (event, index) => {
     // console.log(index, event.target.name);
     event.preventDefault()
@@ -39,6 +42,14 @@ const Page = () => {
     };
     setEducationField([...educationfield, object]);
   };
+  const addExprienceFields = () => {
+    event.preventDefault()
+    let object = {
+      title: "",
+      company: "",
+    };
+    setExprienceField([...expriencefield, object]);
+  };
 
   const removeEducationField = (index) => {
     event.preventDefault()
@@ -48,6 +59,17 @@ const Page = () => {
       let data = [...educationfield];
       data.splice(index, 1);
       setEducationField(data);
+    }
+  };
+
+  const removeExprienceField = (index) => {
+    event.preventDefault()
+
+    if (educationfield.length > 1) {
+      console.log(index);
+      let data = [...expriencefield];
+      data.splice(index, 1);
+      setExprienceField(data);
     }
   };
 
@@ -267,6 +289,117 @@ const Page = () => {
                       <button onClick={submit}>Save</button>
                     </div>
                     <button onClick={addEducationFields} className="flex">
+                      Add More
+                      <BiAddToQueue />
+                    </button>
+                  </div>
+                );
+              })}
+              <button onClick={handleToggle} className="flex mx-auto mt-16 ">
+                Add Exprience <IoMdSchool />{" "}
+                {isToggled ? (
+                  <IoIosArrowDropupCircle />
+                ) : (
+                  <IoIosArrowDropdownCircle />
+                )}
+              </button>
+              {expriencefield.map((form, index) => {
+                return (
+                  <div key={index} className={`${isToggled ? "" : "hidden"}`} >
+                    <div
+                      className={`sm:col-span-2 mx-auto max-w-xl border-slate-400 border-2 rounded-lg box-border relative`}
+                    >
+                      <button
+                        onClick={() => {
+                          removeExprienceField(index);
+                        }}
+                        className=" absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500  border-white rounded-full -top-4 -right-0 drop-shadow-lg"
+                      >
+                        X
+                      </button>
+                      <div>
+                        <label
+                          htmlFor="position"
+                          className="block text-sm font-semibold leading-6 text-gray-900"
+                        >
+                          Title/Position
+                        </label>
+                        <div className="mt-2.5">
+                          <input
+                            type="text"
+                            name="position"
+                            id="position"
+                            // value={form.degree}
+                            onChange={(event) => handleFormChange(event, index)}
+                            className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                          />
+                        </div>
+                      </div>
+                      <div>
+                        <label
+                          htmlFor="company"
+                          className="block text-sm font-semibold leading-6 text-gray-900"
+                        >
+                          Organization/Company
+                        </label>
+                        <div className="mt-2.5">
+                          <input
+                            type="text"
+                            name="company"
+                            id="company"
+                            // value={form.school}
+                            onChange={(event) => handleFormChange(event, index)}
+                            className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                          />
+                        </div>
+                      </div>
+
+                      <div className="md:flex">
+                        <div className="md:mr-2">
+                          <label
+                            htmlFor="ExpStrDate"
+                            className="block text-sm font-semibold leading-6 text-gray-900"
+                          >
+                            Start Date
+                          </label>
+                          <div className="mt-2.5">
+                            <input
+                              type="date"
+                              name="ExpStrDate"
+                              id="startDate"
+                              // value={form.degree}
+                              onChange={(event) =>
+                                handleFormChange(event, index)
+                              }
+                              className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                            />
+                          </div>
+                        </div>
+                        <div>
+                          <label
+                            htmlFor="ExpEndDate"
+                            className="block text-sm font-semibold leading-6 text-gray-900"
+                          >
+                            End Date
+                          </label>
+                          <div className="mt-2.5">
+                            <input
+                              type="date"
+                              name="ExpEndDate"
+                              id="ExpEndDate"
+                              // value={form.degree}
+                              onChange={(event) =>
+                                handleFormChange(event, index)
+                              }
+                              className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                            />
+                          </div>
+                        </div>
+                      </div>
+
+                      <button onClick={submit}>Save</button>
+                    </div>
+                    <button onClick={addExprienceFields} className="flex">
                       Add More
                       <BiAddToQueue />
                     </button>
