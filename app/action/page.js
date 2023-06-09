@@ -65,7 +65,7 @@ const Page = () => {
   const removeExprienceField = (index) => {
     event.preventDefault()
 
-    if (educationfield.length > 1) {
+    if (expriencefield.length > 1) {
       console.log(index);
       let data = [...expriencefield];
       data.splice(index, 1);
@@ -185,7 +185,7 @@ const Page = () => {
                 </div>
               </div>
               <button onClick={handleToggle} className="flex mx-auto mt-16 ">
-                Add Education <IoMdSchool />{" "}
+                Add Education <IoMdSchool />
                 {isToggled ? (
                   <IoIosArrowDropupCircle />
                 ) : (
@@ -296,7 +296,7 @@ const Page = () => {
                 );
               })}
               <button onClick={handleToggle} className="flex mx-auto mt-16 ">
-                Add Exprience <IoMdSchool />{" "}
+                Add Exprience <IoMdSchool />
                 {isToggled ? (
                   <IoIosArrowDropupCircle />
                 ) : (
