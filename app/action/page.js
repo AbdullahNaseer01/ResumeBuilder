@@ -19,7 +19,7 @@ const Page = () => {
   const handleFormChange = (event, index) => {
     // console.log(index, event.target.name);
     event.preventDefault()
-    let data = [...educationfield];
+    let data = [...educationfield];  
     data[index][event.target.name] = event.target.value;
     setEducationField(data);
   };
