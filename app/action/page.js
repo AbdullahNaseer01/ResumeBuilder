@@ -12,37 +12,70 @@ import {
 
 const Page = () => {
   const [educationfield, setEducationField] = useState([
-    { degree: "", school: "" },  
+    { degree: "", school: "" },
   ]);
   const [expriencefield, setExprienceField] = useState([
     { title: "", company: "" },
   ]);
+  const [skillsField, setSkillsField] = useState([{ skill: "" }]);
+
+  const [isEducationToggled, setIsEducationToggled] = useState(false);
+  const [isExperienceToggled, setIsExperienceToggled] = useState(false);
+  const [isSkillsToggled, setIsSkillsToggle] = useState(false);
+
+
   const handleFormChange = (event, index) => {
     // console.log(index, event.target.name);
-    event.preventDefault()
-    let data = [...educationfield];  
+    event.preventDefault();
+    let data = [...educationfield];
     data[index][event.target.name] = event.target.value;
     setEducationField(data);
   };
-  const [isEducationToggled, setIsEducationToggled] = useState(false);
-  const [isExperienceToggled, setIsExperienceToggled] = useState(false);
+  const handleSkillsChange = (event, index) => {
+    event.preventDefault();
+    let data = [...skillsField];
+    data[index][event.target.name] = event.target.value;
+    setSkillsField(data);
+  };
+  const addSkillsFields = () => {
+    event.preventDefault();
+    let object = {
+      skill: "",
+    };
+    setSkillsField([...skillsField, object]);
+  };
+  const removeSkillsField = (index) => {
+    event.preventDefault();
+
+    if (skillsField.length > 1) {
+      let data = [...skillsField];
+      data.splice(index, 1);
+      setSkillsField(data);
+    }
+  };
+
+  const handleSkillsToggle = () => {
+    event.preventDefault();
+    setIsSkillsToggle(!isSkillsToggled);
+  };
 
   const handleEducationToggle = () => {
-    event.preventDefault()
+    event.preventDefault();
     setIsEducationToggled(!isEducationToggled);
   };
 
   const handleExperienceToggle = () => {
-    event.preventDefault()
+    event.preventDefault();
     setIsExperienceToggled(!isExperienceToggled);
   };
 
   const submit = () => {
-    event.preventDefault()
-    console.log(educationfield);
+    event.preventDefault();
+    // console.log(educationfield);
+    // console.log(skillsField)
   };
   const addEducationFields = () => {
-    event.preventDefault()
+    event.preventDefault();
     let object = {
       degree: "",
       school: "",
@@ -50,7 +83,7 @@ const Page = () => {
     setEducationField([...educationfield, object]);
   };
   const addExprienceFields = () => {
-    event.preventDefault()
+    event.preventDefault();
     let object = {
       title: "",
       company: "",
@@ -59,7 +92,7 @@ const Page = () => {
   };
 
   const removeEducationField = (index) => {
-    event.preventDefault()
+    event.preventDefault();
 
     if (educationfield.length > 1) {
       console.log(index);
@@ -70,7 +103,7 @@ const Page = () => {
   };
 
   const removeExprienceField = (index) => {
-    event.preventDefault()
+    event.preventDefault();
 
     if (expriencefield.length > 1) {
       console.log(index);
@@ -191,7 +224,10 @@ const Page = () => {
                   </div>
                 </div>
               </div>
-              <button onClick={handleEducationToggle} className="flex mx-auto mt-16 ">
+              <button
+                onClick={handleEducationToggle}
+                className="flex mx-auto mt-16 "
+              >
                 Add Education <IoMdSchool />
                 {isEducationToggled ? (
                   <IoIosArrowDropupCircle />
@@ -201,7 +237,10 @@ const Page = () => {
               </button>
               {educationfield.map((form, index) => {
                 return (
-                  <div key={index} className={`${isEducationToggled ? "" : "hidden"}`} >
+                  <div
+                    key={index}
+                    className={`${isEducationToggled ? "" : "hidden"}`}
+                  >
                     <div
                       className={`sm:col-span-2 mx-auto max-w-xl border-slate-400 border-2 rounded-lg box-border relative`}
                     >
@@ -302,8 +341,11 @@ const Page = () => {
                   </div>
                 );
               })}
-              <button onClick={handleExperienceToggle} className="flex mx-auto mt-16 ">
-                Add Exprience <PiBagFill/>
+              <button
+                onClick={handleExperienceToggle}
+                className="flex mx-auto mt-16 "
+              >
+                Add Exprience <PiBagFill />
                 {isExperienceToggled ? (
                   <IoIosArrowDropupCircle />
                 ) : (
@@ -312,7 +354,10 @@ const Page = () => {
               </button>
               {expriencefield.map((form, index) => {
                 return (
-                  <div key={index} className={`${isExperienceToggled ? "" : "hidden"}`} >
+                  <div
+                    key={index}
+                    className={`${isExperienceToggled ? "" : "hidden"}`}
+                  >
                     <div
                       className={`sm:col-span-2 mx-auto max-w-xl border-slate-400 border-2 rounded-lg box-border relative`}
                     >
@@ -407,6 +452,67 @@ const Page = () => {
                       <button onClick={submit}>Save</button>
                     </div>
                     <button onClick={addExprienceFields} className="flex">
+                      Add More
+                      <BiAddToQueue />
+                    </button>
+                  </div>
+                );
+              })}
+
+              {/* add skills */}
+
+              <button
+                onClick={handleSkillsToggle}
+                className="flex mx-auto mt-16"
+              >
+                Add Skills <BiAddToQueue />
+                {isSkillsToggled ? (
+                  <IoIosArrowDropupCircle />
+                ) : (
+                  <IoIosArrowDropdownCircle />
+                )}
+              </button>
+              {skillsField.map((form, index) => {
+                return (
+                  <div
+                    key={index}
+                    className={`${isSkillsToggled ? "" : "hidden"}`}
+                  >
+                    <div
+                      className={`sm:col-span-2 mx-auto max-w-xl border-slate-400 border-2 rounded-lg box-border relative`}
+                    >
+                      <button
+                        onClick={() => {
+                          removeSkillsField(index);
+                        }}
+                        className="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 border-white rounded-full -top-4 -right-0 drop-shadow-lg"
+                      >
+                        X
+                      </button>
+                      <div>
+                        <label
+                          htmlFor="skill"
+                          className="block text-sm font-semibold leading-6 text-gray-900"
+                        >
+                          Skill
+                        </label>
+                        <div className="mt-2.5">
+                          <input
+                            type="text"
+                            name="skill"
+                            id="skill"
+                            value={form.skill}
+                            onChange={(event) =>
+                              handleSkillsChange(event, index)
+                            }
+                            className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                          />
+                        </div>
+                      </div>
+
+                      <button onClick={submit}>Save</button>
+                    </div>
+                    <button onClick={addSkillsFields} className="flex">
                       Add More
                       <BiAddToQueue />
                     </button>
