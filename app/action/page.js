@@ -2,6 +2,7 @@
 import React from "react";
 import { useState } from "react";
 import { CiSquareRemove } from "react-icons/ci";
+import { PiBagFill } from "react-icons/pi";
 import { BiAddToQueue } from "react-icons/bi";
 import {
   IoMdSchool,
@@ -11,7 +12,7 @@ import {
 
 const Page = () => {
   const [educationfield, setEducationField] = useState([
-    { degree: "", school: "" },
+    { degree: "", school: "" },  
   ]);
   const [expriencefield, setExprienceField] = useState([
     { title: "", company: "" },
@@ -23,11 +24,17 @@ const Page = () => {
     data[index][event.target.name] = event.target.value;
     setEducationField(data);
   };
-  const [isToggled, setIsToggled] = useState(false);
+  const [isEducationToggled, setIsEducationToggled] = useState(false);
+  const [isExperienceToggled, setIsExperienceToggled] = useState(false);
 
-  const handleToggle = () => {
+  const handleEducationToggle = () => {
     event.preventDefault()
-    setIsToggled(!isToggled);
+    setIsEducationToggled(!isEducationToggled);
+  };
+
+  const handleExperienceToggle = () => {
+    event.preventDefault()
+    setIsExperienceToggled(!isExperienceToggled);
   };
 
   const submit = () => {
@@ -184,9 +191,9 @@ const Page = () => {
                   </div>
                 </div>
               </div>
-              <button onClick={handleToggle} className="flex mx-auto mt-16 ">
+              <button onClick={handleEducationToggle} className="flex mx-auto mt-16 ">
                 Add Education <IoMdSchool />
-                {isToggled ? (
+                {isEducationToggled ? (
                   <IoIosArrowDropupCircle />
                 ) : (
                   <IoIosArrowDropdownCircle />
@@ -194,7 +201,7 @@ const Page = () => {
               </button>
               {educationfield.map((form, index) => {
                 return (
-                  <div key={index} className={`${isToggled ? "" : "hidden"}`} >
+                  <div key={index} className={`${isEducationToggled ? "" : "hidden"}`} >
                     <div
                       className={`sm:col-span-2 mx-auto max-w-xl border-slate-400 border-2 rounded-lg box-border relative`}
                     >
@@ -295,9 +302,9 @@ const Page = () => {
                   </div>
                 );
               })}
-              <button onClick={handleToggle} className="flex mx-auto mt-16 ">
-                Add Exprience <IoMdSchool />
-                {isToggled ? (
+              <button onClick={handleExperienceToggle} className="flex mx-auto mt-16 ">
+                Add Exprience <PiBagFill/>
+                {isExperienceToggled ? (
                   <IoIosArrowDropupCircle />
                 ) : (
                   <IoIosArrowDropdownCircle />
@@ -305,7 +312,7 @@ const Page = () => {
               </button>
               {expriencefield.map((form, index) => {
                 return (
-                  <div key={index} className={`${isToggled ? "" : "hidden"}`} >
+                  <div key={index} className={`${isExperienceToggled ? "" : "hidden"}`} >
                     <div
                       className={`sm:col-span-2 mx-auto max-w-xl border-slate-400 border-2 rounded-lg box-border relative`}
                     >
