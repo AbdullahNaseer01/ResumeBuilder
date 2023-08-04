@@ -18,6 +18,14 @@ const Page = () => {
   const [isSkillsToggled, setIsSkillsToggle] = useState(false);
 
 //******************* form inetial states ************************
+const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [title, setTitle] = useState("");
+  const [about, setAbout] = useState("");
+  const [email, setEmail] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+
+
   const [educationfield, setEducationField] = useState([
     { degree: "", school: "" },
   ]);
@@ -43,6 +51,30 @@ const Page = () => {
   };
 
   // ********** handle change functions *************
+
+  const handleFirstNameChange = (event) => {
+    setFirstName(event.target.value);
+  };
+
+  const handleLastNameChange = (event) => {
+    setLastName(event.target.value);
+  };
+
+  const handleTitleChange = (event) => {
+    setTitle(event.target.value);
+  };
+
+  const handleAboutChange = (event) => {
+    setAbout(event.target.value);
+  };
+
+  const handleEmailChange = (event) => {
+    setEmail(event.target.value);
+  };
+  const handlePhoneNumberChange = (event) => {
+    setPhoneNumber(event.target.value);
+  };
+
   const handleFormChange = (event, index) => {
     event.preventDefault();
     console.log(index, event.target.name);
@@ -122,14 +154,24 @@ const Page = () => {
       setExprienceField(data);
     }
   };
+  // const () = () => {
+  //   event.preventDefault();
+  //   // console.log(educationfield);
+  //   // console.log(skillsField)
+  //   // console.log(first-name)
+  // };
 
-
-
-  const submit = () => {
+ 
+  const handleSubmit = (event) => {
     event.preventDefault();
-    // console.log(educationfield);
-    // console.log(skillsField)
-    // console.log(first-name)
+
+    // Do something with the form data, e.g., send to a server, update state, etc.
+    console.log('First Name:', firstName);
+    console.log('Last Name:', lastName);
+    console.log('Title:', title);
+    console.log('About:', about);
+    console.log('Email:', email);
+    console.log('phoneNumber', phoneNumber)
   };
 
 
@@ -156,6 +198,8 @@ const Page = () => {
                     <input
                       type="text"
                       name="first-name"
+                      value={firstName}
+                      onChange={handleFirstNameChange}
                       id="first-name"
                       className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     />
@@ -172,6 +216,8 @@ const Page = () => {
                     <input
                       type="text"
                       name="last-name"
+                      value={lastName}
+                      onChange={handleLastNameChange}
                       id="last-name"
                       className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     />
@@ -188,6 +234,8 @@ const Page = () => {
                     <input
                       type="text"
                       name="title"
+                      value={title}
+                      onChange={handleTitleChange}
                       id="title"
                       className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     />
@@ -204,10 +252,11 @@ const Page = () => {
                   <div className="mt-2.5">
                     <textarea
                       name="about"
+                      value={about}
+                      onChange={handleAboutChange}
                       id="about"
                       rows={2}
                       className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                      defaultValue={""}
                     />
                   </div>
                 </div>
@@ -223,6 +272,8 @@ const Page = () => {
                     <input
                       type="email"
                       name="email"
+                      value={email}
+                      onChange={handleEmailChange}
                       id="email"
                       className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     />
@@ -239,6 +290,8 @@ const Page = () => {
                     <input
                       type="tel"
                       name="phone-number"
+                      value={phoneNumber}
+                      onChange={handlePhoneNumberChange}
                       id="phone-number"
                       className="block w-full rounded-md border-0 px-3.5 py-2 pl-20 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     />
@@ -353,7 +406,7 @@ const Page = () => {
                         </div>
                       </div>
 
-                      <button onClick={submit}>Save</button>
+                      <button onClick={()=>{}}>Save</button>
                     </div>
                     <button onClick={addEducationFields} className="flex">
                       Add More
@@ -470,7 +523,7 @@ const Page = () => {
                         </div>
                       </div>
 
-                      <button onClick={submit}>Save</button>
+                      <button onClick={()=>{}}>Save</button>
                     </div>
                     <button onClick={addExprienceFields} className="flex">
                       Add More
@@ -531,7 +584,7 @@ const Page = () => {
                         </div>
                       </div>
 
-                      <button onClick={submit}>Save</button>
+                      <button onClick={()=>{}}>Save</button>
                     </div>
                     <button onClick={addSkillsFields} className="flex">
                       Add More
@@ -541,8 +594,11 @@ const Page = () => {
                 );
               })}
             </form>
+            <button onClick={handleSubmit}>Save</button>
+
+
           </div>
-          {/* <div className="w-full bg-red-300 sm:w-1/2 ">Resume</div> */}
+        
           <Resume/>
         </div>
       </div>
