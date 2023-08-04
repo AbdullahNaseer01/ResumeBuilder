@@ -365,10 +365,7 @@ const Resume = () => {
                   </h2>
                   <div className="border-2 w-20 border-top-color my-3" />
                   <p>
-                    To get a career opportunity which would help me to utilize
-                    my academic background to assist me to gain experience,
-                    employ my excellent skills, and enable me to make positive
-                    contribution.
+                    {about}
                   </p>
                 </div>
                 {/* Professional Experience */}
