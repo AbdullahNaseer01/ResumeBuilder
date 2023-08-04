@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React, { createContext, useState } from "react";
 
 // Create the context
@@ -161,22 +161,32 @@ const FormDataProvider = ({ children }) => {
 
   const FormDataContextValue = {
     isEducationToggled,
-    setIsEducationToggled,
+    educationfield,
+    expriencefield,
+    skillsField,
+    skillsField,
     isExperienceToggled,
-    setIsExperienceToggled,
     isSkillsToggled,
-    setIsSkillsToggle,
     firstName,
-    setFirstName,
     lastName,
-    setLastName,
     title,
-    setTitle,
     about,
-    setAbout,
     email,
-    setEmail,
     phoneNumber,
+    setIsEducationToggled,
+    addEducationFields,
+    addExprienceFields,
+    addSkillsFields,
+    removeExprienceField,
+    removeEducationField,
+    removeSkillsField,
+    setIsExperienceToggled,
+    setIsSkillsToggle,
+    setFirstName,
+    setLastName,
+    setTitle,
+    setAbout,
+    setEmail,
     setPhoneNumber,
     handleSubmit,
     handleAboutChange,
@@ -193,7 +203,9 @@ const FormDataProvider = ({ children }) => {
     handleTitleChange,
   };
   return (
-    <FormDataContext.Provider value={FormDataContextValue}>{children}</FormDataContext.Provider>
+    <FormDataContext.Provider value={FormDataContextValue}>
+      {children}
+    </FormDataContext.Provider>
   );
 };
 
