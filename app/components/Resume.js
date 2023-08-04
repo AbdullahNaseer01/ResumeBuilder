@@ -83,7 +83,7 @@ const Resume = () => {
                         </svg>
                       </a>
                       <div className="ml-2 truncate">
-                        amitpachange@gmail.com
+                        {email}
                       </div>
                     </div>
                     <div className="flex items-center my-1">
@@ -104,7 +104,7 @@ const Resume = () => {
                           ></path>
                         </svg>
                       </a>
-                      <div>9145258775</div>
+                      <div>{phoneNumber}</div>
                     </div>
                     <div className="flex items-center my-1">
                       <a
