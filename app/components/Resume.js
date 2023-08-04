@@ -1,6 +1,46 @@
 import React from 'react'
+import { useContext } from 'react'
+import { FormDataContext } from '@/context/FormDataContext'
 
 const Resume = () => {
+   const {
+    isEducationToggled,
+    setIsEducationToggled,
+    isExperienceToggled,
+    setIsExperienceToggled,
+    isSkillsToggled,
+    setIsSkillsToggle,
+    firstName,
+    setFirstName,
+    lastName,
+    setLastName,
+    title,
+    setTitle,
+    about,
+    setAbout,
+    email,
+    setEmail,
+    phoneNumber,
+    setPhoneNumber,
+    handleSubmit,
+    handleAboutChange,
+    handleEducationToggle,
+    handleEmailChange,
+    handleExperienceToggle,
+    handleExprienceChange,
+    handleFirstNameChange,
+    handleFormChange,
+    handleLastNameChange,
+    handlePhoneNumberChange,
+    handleSkillsChange,
+    handleSkillsToggle,
+    handleTitleChange,
+  } = useContext(FormDataContext);
+   
+
+
+
+
   return (
     <>
     <div className="bg-gray-100 p-4">

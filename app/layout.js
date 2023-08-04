@@ -1,3 +1,4 @@
+ import { FormDataProvider } from "@/context/FormDataContext";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import "./globals.css";
@@ -14,9 +15,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className="h-full">
       <body className={`flex flex-col min-h-screen ${inter.className}`}>
-        <Navbar className="flex-shrink-0" />
-        <div className="flex-grow">{children}</div>
-        <Footer className="flex-shrink-0" />
+        <FormDataProvider>
+          <Navbar className="flex-shrink-0" />
+          <div className="flex-grow">{children}</div>
+          <Footer className="flex-shrink-0" />
+        </FormDataProvider>
       </body>
     </html>
   );

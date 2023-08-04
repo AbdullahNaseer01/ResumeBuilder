@@ -154,17 +154,9 @@ const [firstName, setFirstName] = useState("");
       setExprienceField(data);
     }
   };
-  // const () = () => {
-  //   event.preventDefault();
-  //   // console.log(educationfield);
-  //   // console.log(skillsField)
-  //   // console.log(first-name)
-  // };
 
- 
   const handleSubmit = (event) => {
     event.preventDefault();
-
     // Do something with the form data, e.g., send to a server, update state, etc.
     console.log('First Name:', firstName);
     console.log('Last Name:', lastName);
